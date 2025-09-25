@@ -5,20 +5,96 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
+    <!--bai 1-->
+    <!--exp 02-->
+    <bean id="student1" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp02.Student">
+        <property name="id" value="001"/>
+        <property name="name" value="Nguyen Van A"/>
+    </bean>
 
-    <bean id="addressBean" class="fit.iuh.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai2.xml_based.Address">
+    <bean id="class1" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp02.Class_">
+        <property name="classId" value="DHKTPM17C"/>
+        <property name="className" value="Dai Hoc KTPM17C"/>
+    </bean>
+
+    <bean id="student2" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp02.Student">
+        <property name="id" value="002"/>
+        <property name="name" value="Nguyen Van"/>
+        <property name="class_" ref="class1"/>
+    </bean>
+
+    <bean id="student3" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp02.Student">
+        <constructor-arg name="id" value="003"/>
+        <constructor-arg name="name" value="Nguyen Van Anh"/>
+        <constructor-arg name="class_" ref="class1"/>
+    </bean>
+
+    <!--exp 03-->
+    <bean id="address1" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp03.Address">
+        <property name="street" value="Nguyen Van Bao"/>
+        <property name="city" value="HCM"/>
+        <property name="country" value="Viet Nam"/>
+    </bean>
+
+    <bean id="address2" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp03.Address">
+        <property name="street" value="Nguyen Thai Son"/>
+        <property name="city" value="HCM"/>
+        <property name="country" value="Viet Nam"/>
+    </bean>
+
+    <bean id="person" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp03.Person">
+        <property name="name" value="Nguyen Van A1"/>
+        <property name="addresses">
+            <list>
+                <ref bean="address1"/>
+                <ref bean="address2"/>
+            </list>
+        </property>
+        <property name="emails">
+            <list>
+                <value>a1@gmail.com</value>
+                <value>a1@yopmail.com</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--exp 04-->
+    <bean id="faculty" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp04.Faculty">
+        <property name="id" value="FIT"/>
+        <property name="name" value="Faculty of Information Technology"/>
+    </bean>
+
+    <bean id="dept1" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp04.Department" autowire="byName">
+        <property name="id" value="DP1"/>
+        <property name="name" value="Department 1"/>
+    </bean>
+
+    <bean id="dept3" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp04.Department" autowire="byType">
+        <property name="id" value="DP3"/>
+        <property name="name" value="Department 3"/>
+    </bean>
+
+    <bean id="dept4" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai1.exp04.Department" autowire="constructor">
+        <property name="id" value="DP4"/>
+        <property name="name" value="Department 4"/>
+    </bean>
+
+
+    <!--bai 2-->
+    <bean id="addressBean" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai2.xml_based.Address">
         <property name="city" value="Thu Duc"/>
         <property name="state" value="Under the hood!"/>
         <property name="country" value="Viet Nam"/>
     </bean>
 
-    <bean id="employeeBean" class="fit.iuh.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai2.xml_based.Employee">
-        <property name="id" value="1" />
-        <property name="name" value="Meo Ngot" />
-        <property name="address" ref="addressBean" />
+    <bean id="employeeBean" class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai2.xml_based.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="Meo Ngot"/>
+        <property name="address" ref="addressBean"/>
     </bean>
 
-    <bean id="employeeBeanConstructor" class="fit.iuh.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai2.xml_based.Employee">
+    <bean id="employeeBeanConstructor"
+          class="iuh.fit.se.ltwww_java_25092025_tuan06_dangnguyentienphat.bai2.xml_based.Employee">
         <constructor-arg value="2"/>
         <constructor-arg value="Keo Chanh"/>
         <constructor-arg ref="addressBean"/>
